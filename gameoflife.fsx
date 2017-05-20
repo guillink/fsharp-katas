@@ -16,10 +16,10 @@ let countNeighbors x y grid =
     count x y grid neighbors 0
 
 let nextGenCell grid x y cell = 
-        match countNeighbors x y grid, cell with
-        | 2,A -> A
-        | 3,_ -> A
-        | _,_ -> D
+    match countNeighbors x y grid, cell with
+    | 2,A -> A
+    | 3,_ -> A
+    | _,_ -> D
 
 let nextGen grid = Array2D.mapi (nextGenCell grid) grid
 

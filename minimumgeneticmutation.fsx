@@ -8,9 +8,9 @@ let possibleMutation x y =
 let buildTree start bank = 
     let rec buildTree cur bank =
         match List.where (possibleMutation cur) bank with 
-        | [] -> [Leaf cur]
-        | xs -> List.map (fun x -> Node (cur, (buildTree x (List.except [x] bank)))) xs
-    List.head (buildTree start bank)
+        | [] -> Leaf cur
+        | xs -> Node (cur, List.map (fun x -> (buildTree x (List.except [x] bank))) xs)
+    buildTree start bank
 
 let getPaths tree = 
     let rec dfs depth tree =
